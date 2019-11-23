@@ -132,16 +132,12 @@ app.post('/task-added', function(req, res){
 
 app.post('/delete', function(req, res){
 
-    console.log('Deleted:\n', req.body.name);
-
     for (var i = 0; i < actions.actions.length; i++){
         if(actions.actions[i] === req.body.name){
             actions.actions.splice(i,1);
         }
     }
-    res.json({
-        message: "Deleted."
-    })
+    console.log(actions['actions'])
 })
 
 const data = require('./actions.json')
