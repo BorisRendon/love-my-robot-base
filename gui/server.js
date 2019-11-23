@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-//var path = require('path')
+var path = require('path')
 var bodyParser = require('body-parser');
 const Mustache = require('mustache')
 const fs = require('fs')
@@ -126,6 +126,30 @@ app.post('/task-added', function(req, res){
     console.log(actions['actions'])
     
     //act.push(req.body.name);
+})
+
+
+
+app.post('/delete', function(req, res){
+
+    console.log('Deleted:\n', req.body.name);
+
+    for (var i = 0; i < actions.actions.length; i++){
+        if(actions.actions[i] === req.body.name){
+            actions.actions.splice(i,1);
+        }
+    }
+    res.json({
+        message: "Deleted."
+    })
+})
+
+const data = require('./actions.json')
+
+app.post('http://localhost:5000/Lex', function (req, res){
+
+    res.json(data);
+
 })
 
 //app.get('/', (req, res) => res.send('Hello From Express'))
