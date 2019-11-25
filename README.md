@@ -30,3 +30,82 @@ docker-compose down -v
 # Probar solo un app y compilar antes
 
 docker-compose up --build lex
+
+
+# Installation (Step-by-step) 
+
+As first step, you have to [git] clone this repo:
+
+```bash
+git clone https://github.com/BorisRendon/love-my-robot-base.git
+```
+
+Once you clone the repo, you have to go to the main directory of the project:
+
+```bash
+cd love-my-robot-base
+```
+
+## GUI 
+
+This is the first part of our project.
+
+Go to the gui folder:
+
+```bash
+cd gui
+``` 
+
+Now, you have to install all the dependecies to execute correctly this project:
+
+```bash
+npm install
+```
+
+## Lex
+
+Then, after you install the dependecies of GUI, you need to install the dependecies of Lex, our final part of the project.
+
+First, if you are in love-my-robot-base/gui, then:
+
+```bash
+cd ..
+``` 
+
+Go to lex dir:
+
+```bash
+cd lex
+``` 
+
+Run the following command to install the rest of requirements:
+
+```python
+pip install -r requirements.txt
+``` 
+
+Now you are ready to start playing with Cozmo! :D
+
+# Running the project
+
+## GUI
+
+Run:
+
+```bash
+node server.js
+``` 
+
+> Open you localhost in the port 8080/home
+
+## Lex
+
+```bash
+python lex.py
+``` 
+
+
+
+
+
+
