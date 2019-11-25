@@ -15,15 +15,13 @@ $( document ).ready(function() {
         });
     }    
     }, 0);
-    // put li in stack with its attributes
-    setTimeout(() => {
-        $(".modal-item").click(function(event){
-            var modifier = event.target.getAttribute("modifier")            
-            modal(modifier)
-        });
 
-    }, 0);
+});
 
+
+$(".modal-item").click(function(event){
+    var modifier = event.target.getAttribute("modifier")            
+    modal(modifier)
 });
 
 // remove li in stack
@@ -34,8 +32,13 @@ $(document).on('click', "button.remove", function(event) {
     $.post('/delete', {name:elementtoRemove}); 
 });
 
-function modal(modifier){
-    $(".push-to-stack").click(function(event){
+var modifier
+
+function modal(mod){
+    modifier = mod
+}
+
+$(".push-to-stack").click(function(event){
     console.log("going to stack")
 
     // modify the code with attribute
@@ -45,5 +48,4 @@ function modal(modifier){
     $("#cozmo-stack").append('<li class="list-group-item" code='+theCode+'>'+event.target.name+" "+modifier+'<button class="remove btn-danger float-right" code='+theCode+'> x </button></li>');
     let newItem = theCode
     $.post('/task-added', {name:newItem}); 
-    });
-}
+});
