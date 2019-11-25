@@ -11,13 +11,39 @@
       <div class="modal-body">
         {{description}}
       </div>
+      <!---- input text -->
+      {{# text-input}}
       <div>
-        {{{jscode}}}
+        <input type='text'>
       </div>
+      {{/ text-input}}
+      <!---- input dropdown -->
+      {{ ^ text-input}}
+      <div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true'>
+          Choose
+        </button>
+        <div class='dropdown-menu'>
+          {{# list}}
+          <a class='dropdown-item modal-item' modifier = {{1}}>
+            {{ 1 }}
+          </a>
+          <a class='dropdown-item modal-item'  modifier = {{2}}>
+            {{ 2 }}
+          </a>
+          <a class='dropdown-item modal-item'  modifier = {{3}}>
+            {{{ 3 }}}
+          </a>
+          {{/list}}
+        </div>
+      </div>
+      {{/ text-input}}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary push-to-stack" data-dismiss="modal" name={{name}} code={{code}}>Save changes</button>
+        <button type="button" class="btn btn-primary push-to-stack" data-dismiss="modal" name={{name}}
+          code={{code}}>Save changes</button>
       </div>
     </div>
   </div>
 </div>
+<!---<input type='text' name='say' placeholder='Your input'>-->
