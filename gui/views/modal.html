@@ -23,15 +23,15 @@
         <button class='btn btn-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true'>
           Choose
         </button>
-        <div class='dropdown-menu'>
+        <div class='dropdown-menu' name="dropdown-menu">
           {{# list}}
-          <a class='dropdown-item modal-item'>
+          <a class='dropdown-item modal-item' modifier = {{1}}>
             {{ 1 }}
           </a>
-          <a class='dropdown-item modal-item'>
+          <a class='dropdown-item modal-item'  modifier = {{2}}>
             {{ 2 }}
           </a>
-          <a class='dropdown-item modal-item'>
+          <a class='dropdown-item modal-item'  modifier = {{3}}>
             {{{ 3 }}}
           </a>
           {{/list}}
