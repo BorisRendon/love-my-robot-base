@@ -7,7 +7,21 @@ app = Flask(__name__)
 #sys.path.append('C:/Users/rmfer/Desktop/UFM/Sexto Semestre (2019)/Proyecto final P3/love-my-robot-base/lex/transpiled') #Hacerlo dinamico
 
 big_string = ''
+
+timestamp2 = str(datetime.now())
+
+
 def generate_code(test, cond):
+
+    '''
+    test:
+        Cadena de instrucciones. (LMR)
+    cond:
+        Es la condicion si es una funcion async o no.
+    asyncs:
+        Lista de intrucciones que son async.
+    '''
+
     asyncs = ["POP_A_WHEELIE", "ROLL_A_CUBE"]
     for i in test:
         if i[0] in asyncs:
@@ -15,10 +29,20 @@ def generate_code(test, cond):
     timestamp = str(datetime.now()).replace(' ', '_').replace(':','_')
     with open('transpiled/cozmo_generated_program.py', '+w') as f:
         if cond:
-            big_string = 'import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n' #verificar async functions
-            f.write('import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n')
+            big_string = 'import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n' #Template de codigos generados
+            f.write('import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n')      #String a enviar el archivo
             for x in test:
                 try:
+
+                    '''
+                        data[x[0]]:
+                                    Opcode, instruccion.
+                        .format(x[1]):
+                                    Ingreso de los argumentos en las funciones.
+
+                        IndexError:
+                                En caso la instruccion no tenga argumentos.
+                    '''
                     f.write('    '+data[x[0]].format(x[1])+'\n')
                     big_string = big_string +'    '+ data[x[0]].format(x[1])+'\n'
                 except IndexError:
@@ -28,7 +52,7 @@ def generate_code(test, cond):
             big_string = big_string + '\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)'
         if not cond:
             big_string = 'import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\nasync def cozmo_program(robot: cozmo.robot.Robot):\n'
-            f.write('import cozmo \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n')
+            f.write('import cozmo \nfrom cozmo.util import degrees, distance_mm, speed_mmps\nasync def cozmo_program(robot: cozmo.robot.Robot):\n')
             for y in test:
                 try:
                     f.write('    '+data[y[0]].format(y[1])+'\n')
@@ -37,19 +61,17 @@ def generate_code(test, cond):
                     f.write('    '+data[y[0]]+'\n')
                     big_string = big_string +'    '+ data[y[0]]+'\n'
             f.write('\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)')
-            big_string = big_string + '\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)'   
-    from transpiled import cozmo_generated_program as p
+            big_string = big_string + '\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)'  
+
+    from transpiled import cozmo_generated_program as p #Importacion dinamica.
     try:
         p.run(p.cozmo_program)
     except:
         print('DIDNT FINISH')
     os.rename(r'transpiled/cozmo_generated_program.py', r'transpiled/cozmo_generated_program'+str(timestamp)+r'.py')
     return big_string
-#reading json file
 
 
-
-#en el json falta poner los parámetros de cada funciones para leerlos y jalarlos
 data = {
     'DRIVE':'robot.drive_straight(distance_mm({}),speed_mmps(50)).wait_for_completed()',
     'TURN':'robot.turn_in_place(degrees({})).wait_for_completed()',
@@ -117,12 +139,15 @@ def lex():
     leer_instrucciones(instrucciones)
     big_string = generate_code(instruc, boolean)
     instruc = []
-    return '{}'.format(big_string)
+    return 'Success :)'
+
 @app.route('/')
+
 def hello_world():
    
     global big_string
-    return render_template("index.html", big_string=big_string)
+    global timestamp2
+    return render_template("index.html", big_string=big_string, time=timestamp2)
 
 def leer_instrucciones(lista):
     for i in lista:

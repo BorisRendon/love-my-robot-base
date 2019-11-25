@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-var path = require('path')
 var bodyParser = require('body-parser');
 const Mustache = require('mustache')
 const fs = require('fs')
