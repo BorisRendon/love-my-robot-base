@@ -1,5 +1,9 @@
-let actions = ["move", "sounds", "cozmo-lights", "animations"]
+[2:13 p. m., 25/11/2019] Maite: let actions = ["move", "sounds", "cozmo-lights", "animations"]
 $( document ).ready(function() {
+
+    if (localStorage.reload) {
+        $.post('/delete-stack', '')
+    }
 
     // display and hide options from menu
     setTimeout(() => {
@@ -18,6 +22,10 @@ $( document ).ready(function() {
 
 });
 
+window.onbeforeunload = sendTimeToServer;
+function sendTimeToServer() {
+    localStorage.reload = true
+}
 
 $(".modal-item").click(function(event){
     var modifier = event.target.getAttribute("modifier")            

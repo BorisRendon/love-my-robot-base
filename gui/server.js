@@ -164,6 +164,11 @@ app.post('/Lex', function (req, res){
 
 })
 
+app.post('/delete-stack', (req, res) => {
+    actions.actions = []
+    res.status(200).send(true)
+})
+
 //app.get('/', (req, res) => res.send('Hello From Express'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
