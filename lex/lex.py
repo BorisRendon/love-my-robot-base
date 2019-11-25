@@ -8,6 +8,10 @@ app = Flask(__name__)
 
 big_string = ''
 def generate_code(test, cond):
+    asyncs = ["POP_A_WHEELIE", "ROLL_A_CUBE"]
+    for i in test:
+        if i[0] in asyncs:
+            cond = False
     timestamp = str(datetime.now()).replace(' ', '_').replace(':','_')
     with open('transpiled/cozmo_generated_program.py', '+w') as f:
         if cond:
@@ -23,17 +27,20 @@ def generate_code(test, cond):
             f.write('\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)')
             big_string = big_string + '\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)'
         if not cond:
-            big_string = big_string + 'import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\nasync def cozmo_program(robot: cozmo.robot.Robot):\n'
+            big_string = 'import cozmo\nimport time \nfrom cozmo.util import degrees, distance_mm, speed_mmps\nasync def cozmo_program(robot: cozmo.robot.Robot):\n'
             f.write('import cozmo \nfrom cozmo.util import degrees, distance_mm, speed_mmps\ndef cozmo_program(robot: cozmo.robot.Robot):\n')
             for y in test:
-                f.write('    '+data[y].format(y[1])+'\n')
-                big_string = big_string +'   '+ data[y].format(y[1])+'\n'
+                try:
+                    f.write('    '+data[y[0]].format(y[1])+'\n')
+                    big_string = big_string +'    '+ data[y[0]].format(y[1])+'\n'
+                except IndexError:
+                    f.write('    '+data[y[0]]+'\n')
+                    big_string = big_string +'    '+ data[y[0]]+'\n'
             f.write('\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)')
             big_string = big_string + '\ndef run(cozmo_program):\n    cozmo.run_program(cozmo_program)'   
-    #from transpiled import cozmo_generated_program as p
+    from transpiled import cozmo_generated_program as p
     try:
-        pass
-        #p.run(p.cozmo_program)
+        p.run(p.cozmo_program)
     except:
         print('DIDNT FINISH')
     os.rename(r'transpiled/cozmo_generated_program.py', r'transpiled/cozmo_generated_program'+str(timestamp)+r'.py')
@@ -44,6 +51,8 @@ def generate_code(test, cond):
 
 #en el json falta poner los parámetros de cada funciones para leerlos y jalarlos
 data = {
+    'DRIVE':'robot.drive_straight(distance_mm({}),speed_mmps(50)).wait_for_completed()',
+    'TURN':'robot.turn_in_place(degrees({})).wait_for_completed()',
     'ROLL_CUBE': "await robot.set_head_angle(degrees(-5.0)).wait_for_completed()\n" +
 "    print(\"Cozmo is waiting until he sees a cube\")\n" +
 "    cube = await robot.world.wait_for_observed_light_cube()\n" +
@@ -52,8 +61,6 @@ data = {
 "    await action.wait_for_completed()\n" +
 "    print(\"result:\", action.result)\n",
     'SAY': 'robot.say_text("{}").wait_for_completed()',
-    'DRIVE_TURN': "robot.drive_straight(distance_mm({}),speed_mmps(50)).wait_for_completed()\n" +
-"    robot.turn_in_place(degrees({})).wait_for_completed()",
     'COUNT': "for i in range({}):\n" +"\n" +"    robot.say_text(str(i+1)).wait_for_completed()\n",
     'SET_ALL_BACKPACK_LIGHTS': "robot.set_all_backpack_lights(cozmo.lights.red_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.green_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.blue_light)\n" +"    time.sleep(2)\n" +"    robot.set_center_backpack_lights(cozmo.lights.white_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.off_light)\n" +"    time.sleep(2)\n",
     'PLAY_ANIM' : "print(\"Playing Animation Trigger 1:\")\n" +"    robot.play_anim_trigger(cozmo.anim.Triggers.CubePounceLoseSession).wait_for_completed()\n" +"    \n" +"print(\"Playing Animation Trigger 2: (Ignoring the body track)\")\n" +"    robot.play_anim_trigger(cozmo.anim.Triggers.CubePounceLoseSession, ignore_body_track=True).wait_for_completed()\n" +"    \n" +"print(\"Playing Animation 3:\")\n" +"    robot.play_anim(name=\"anim_poked_giggle\").wait_for_completed()\n",
@@ -104,10 +111,11 @@ instruc = []
 def lex():
     global big_string
     global instruc
+    boolean = True
     req_data = request.get_json()
     instrucciones = req_data['lmr']
     leer_instrucciones(instrucciones)
-    big_string = generate_code(instruc, True)
+    big_string = generate_code(instruc, boolean)
     instruc = []
     return '{}'.format(big_string)
 @app.route('/')
@@ -121,8 +129,4 @@ def leer_instrucciones(lista):
         instruc.append(i.split('&', 1))
 
 if __name__ == "__main__":
-    app.run( debug=True)
-    test = ['SAY']
-    boolean = False
-   # if test[0] in test1:
-    #    boolean = True
+    app.run(host="0.0.0.0", debug=True)
