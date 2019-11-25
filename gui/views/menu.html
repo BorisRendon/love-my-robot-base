@@ -4,24 +4,16 @@
     El div contiene una lista de sub-opciones.
 -->
 <div class="general-menu">
-    {{#menuOptions}}
-    <div class="{{name}} menu">
-        {{name}}
-        <ul style="margin-top: -{{gap}}px;" class="{{name}} hide submenu">
-            {{#options}}
-            <li code="{{code}}" description="{{description}}" class="subli">
-                <!-- Si no necesita input para tirarlo de una al stack -->
-                {{# no-input}}
-                <span data-toggle="modal" data-target=#{{name}}>{{name}}</span>
-                {{/ no-input}}
-                <!-- Si necesita input para mostrar el modal -->
-                {{ ^ no-input}}
-                {{ > modal}}
-                {{/ no-input}}
-            </li>
-            {{/options}}
-        </ul>
+        {{#menuOptions}}
+        <div class="{{name}} menu">
+            {{name}}
+            <ul style="margin-top: -{{gap}}px;" class="{{name}} hide submenu">
+                {{#options}}
+                <li code="{{code}}" description="{{description}}" class="subli">
+                    {{ > modal}}
+                </li>
+                {{/options}}
+            </ul>
+        </div>
+        {{/menuOptions}}
     </div>
-    {{/menuOptions}}
-
-</div>
