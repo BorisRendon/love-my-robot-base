@@ -61,7 +61,7 @@ data = {
 "    await action.wait_for_completed()\n" +
 "    print(\"result:\", action.result)\n",
     'SAY': 'robot.say_text("{}").wait_for_completed()',
-    'COUNT': "for i in range({}):\n" +"\n" +"    robot.say_text(str(i+1)).wait_for_completed()\n",
+    'COUNT': "for i in range({}):\n" +"\n" +"       robot.say_text(str(i+1)).wait_for_completed()\n",
     'SET_ALL_BACKPACK_LIGHTS': "robot.set_all_backpack_lights(cozmo.lights.red_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.green_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.blue_light)\n" +"    time.sleep(2)\n" +"    robot.set_center_backpack_lights(cozmo.lights.white_light)\n" +"    time.sleep(2)\n" +"    robot.set_all_backpack_lights(cozmo.lights.off_light)\n" +"    time.sleep(2)\n",
     'PLAY_ANIM' : "print(\"Playing Animation Trigger 1:\")\n" +"    robot.play_anim_trigger(cozmo.anim.Triggers.CubePounceLoseSession).wait_for_completed()\n" +"    \n" +"print(\"Playing Animation Trigger 2: (Ignoring the body track)\")\n" +"    robot.play_anim_trigger(cozmo.anim.Triggers.CubePounceLoseSession, ignore_body_track=True).wait_for_completed()\n" +"    \n" +"print(\"Playing Animation 3:\")\n" +"    robot.play_anim(name=\"anim_poked_giggle\").wait_for_completed()\n",
     'DRIVE_SQUARE': "for _ in range(4):\n" +
