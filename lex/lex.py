@@ -105,6 +105,8 @@ def lex():
     leer_instrucciones(instrucciones)
     big_string = generate_code(['SAY'], True)
     return '{}'.format(instruc)
+
+
 @app.route('/')
 def hello_world():
    
@@ -117,7 +119,7 @@ def leer_instrucciones(lista):
         instruc.append(i.split(' '))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run( debug=True)
     test = ['SAY']
     boolean = False
    # if test[0] in test1:
