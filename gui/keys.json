@@ -4,39 +4,48 @@
         "options": [
             {
                 "name": "forward",
-                "code": "MOVE",
+                "code": "DRIVE",
                 "description" : "Make Cozmo go forward",
-                "no-input" : false
+                "text-input" : false,
+                "list" : {
+                    "1" : "100",
+                    "2" : "150",
+                    "3" : "200"
+                }
             },
             {
                 "name": "backward",
-                "code": "MOVE",
+                "code": "DRIVE",
                 "description" : "Make Cozmo go backward",
-                "no-input" : false
+                "text-input" : false,
+                "list" : {
+                    "1" : "-100",
+                    "2" : "-150",
+                    "3" : "-200"
+                }
             },
             {
                 "name": "square",
-                "code": "SQUARE",
+                "code": "DRIVE_SQUARE",
                 "description" : "Cozmo makes a square",
-                "no-input" : false
+                "text-input" : false
             },
             {
-                "name": "left",
+                "name": "turn",
                 "code": "TURN",
-                "description" : "Turn left",
-                "no-input" : false
+                "description" : "Turn left or right",
+                "text-input" : false,
+                "list" : {
+                    "1" : "0",
+                    "2" : "45",
+                    "3" : "90"
+                }
             },
             {
-                "name": "right",
-                "code": "TURN",
-                "description" : "Turn right" ,
-                "no-input" : false
-            },
-            {
-                "name": "lift",
-                "code": "LIFT",
-                "description" : "Lift a cube",
-                "no-input" : false
+                "name": "roll a cube",
+                "code": "ROLL_A_CUBE",
+                "description" : "Roll a cube",
+                "text-input" : false
             }
         ]
     },
@@ -45,30 +54,25 @@
         "options": [
             {
                 "name": "say",
-                "code": "YES",
-                "description" : "Make Cozmo say yes!",
-                "no-input" : false,
-                "jscode" : "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true'>Say smth</button><div class='dropdown-menu'><a class='dropdown-item'>Yes</a><a class='dropdown-item'><a class='dropdown-item'>Hello World!</a><a class='dropdown-item'><input type='text' name='say' placeholder='Your input'></a></div></div>"
+                "code": "SAY ",
+                "description" : "Make Cozmo say something!",
+                "text-input" : false,
+                "list" : {
+                    "1" : "Yes",
+                    "2" : "Hello World",
+                    "3" : "<input type='text' name='say' placeholder='Your input'>"
+                }
             },
             {
                 "name": "count",
                 "code": "COUNT",
                 "description" : "Cozmo counts for you",
-                "no-input" : false,
-                "jscode" : "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true'>Choose your number</button><div class='dropdown-menu'><a class='dropdown-item'>One</a><a class='dropdown-item'>Two</a><a class='dropdown-item'>Three</a></div></div>"
-            },
-            {
-                "name": "math",
-                "code": "MATH",
-                "description" : "Cozmo know the maths",
-                "no-input" : false,
-                "jscode" : "<input type='text' name='math'>"
-            },
-            {
-                "name": "song",
-                "code": "SOUND",
-                "description" : "Choose your song",
-                "no-input" : false
+                "text-input" : false,
+                "list" : {
+                    "1" : "3",
+                    "2" : "5",
+                    "3" : "10"
+                }
             }
         ]
     },
@@ -77,27 +81,9 @@
         "options": [
             {
                 "name": "red",
-                "code": "LIGHT RED",
+                "code": "SET_ALL_BACKPACK_LIGHTS",
                 "description" : "Turn the red light in Cozmo",
-                "no-input" : false
-            },
-            {
-                "name": "blue",
-                "code": "LIGHT BLUE",
-                "description" : "Blue like the ocean",
-                "no-input" : false
-            },
-            {
-                "name": "green",
-                "code": "LIGHT GREEN",
-                "description" : "Like green tea?",
-                "no-input" : false
-            },
-            {
-                "name": "white",
-                "code": "LIGHT WHITE",
-                "description" : "Turn the white light on",
-                "no-input" : false
+                "text-input" : false
             }
         ]
     },
@@ -106,15 +92,9 @@
         "options": [
             {
                 "name": "happy",
-                "code": "ANIMATION",
+                "code": "PLAY_ANIM",
                 "description" : "Cozmo shows you how to smile",
-                "no-input" : false
-            },
-            {
-                "name": "sad",
-                "code": "ANIMATION",
-                "description" : "Cozmo isn't feeling very good",
-                "no-input" : false
+                "text-input" : false
             }
         ]
     }
