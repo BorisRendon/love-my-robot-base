@@ -81,7 +81,7 @@
         "options": [
             {
                 "name": "red",
-                "code": "SET_BACKPACK_LIGHTS",
+                "code": "SET_ALL_BACKPACK_LIGHTS",
                 "description" : "Turn the red light in Cozmo",
                 "text-input" : false
             }

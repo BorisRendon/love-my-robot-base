@@ -1,6 +1,6 @@
 let actions = ["move", "sounds", "cozmo-lights", "animations"]
 $( document ).ready(function() {
-    console.log("document on")
+
     // display and hide options from menu
     setTimeout(() => {
         for (let i = 0; i < actions.length; i++) {
@@ -20,7 +20,6 @@ $( document ).ready(function() {
         $(".modal-item").click(function(event){
             var modifier = event.target.getAttribute("modifier")            
             modal(modifier)
-
         });
 
     }, 0);
@@ -38,14 +37,13 @@ $(document).on('click', "button.remove", function(event) {
 function modal(modifier){
     $(".push-to-stack").click(function(event){
     console.log("going to stack")
-    console.log(modifier)
+
     // modify the code with attribute
     let theCode = event.target.getAttribute("code")+"&"+modifier
-    console.log(theCode)
+    
     // push li in stack
     $("#cozmo-stack").append('<li class="list-group-item" code='+theCode+'>'+event.target.name+" "+modifier+'<button class="remove btn-danger float-right" code='+theCode+'> x </button></li>');
     let newItem = theCode
     $.post('/task-added', {name:newItem}); 
-
     });
 }
