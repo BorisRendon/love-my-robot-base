@@ -1,4 +1,4 @@
-[2:13 p. m., 25/11/2019] Maite: let actions = ["move", "sounds", "cozmo-lights", "animations"]
+let actions = ["move", "sounds", "cozmo-lights", "animations"]
 $( document ).ready(function() {
 
     if (localStorage.reload) {
