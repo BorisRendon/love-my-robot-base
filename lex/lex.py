@@ -121,7 +121,7 @@ def leer_instrucciones(lista):
         instruc.append(i.split('&', 1))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run( debug=True)
     test = ['SAY']
     boolean = False
    # if test[0] in test1:

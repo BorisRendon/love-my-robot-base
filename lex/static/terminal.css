@@ -17,7 +17,7 @@ body {
   position: relative;
   border-radius: 8px;
   background: #32325d;
-  width: 525px;
+  width: 750px;
   transform: rotate3d(.5,.866,0,15deg) rotate(-1deg);
   box-shadow:
     -27.1px 62.5px 125px -25px rgba(50,50,93,.5), 
