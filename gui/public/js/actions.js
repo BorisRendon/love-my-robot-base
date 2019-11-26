@@ -1,4 +1,4 @@
-let actions = ["move", "sounds", "cozmo-lights", "animations"]
+let actions = ["move", "sounds", "cozmo-things", "animations"]
 $( document ).ready(function() {
 
     if (localStorage.reload) {
@@ -40,13 +40,14 @@ $(document).on('click', "button.remove", function(event) {
     $.post('/delete', {name:elementtoRemove}); 
 });
 
-var modifier
+let modifier
 
 function modal(mod){
     modifier = mod
+    console.log(modifier)
 }
 
-$(".push-to-stack").click(function(event){
+$(".push-to-stack").click((event)=>{
     console.log(modifier)
     modifier = modifier || ''
 

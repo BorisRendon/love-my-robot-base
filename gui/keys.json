@@ -50,9 +50,9 @@
                 "default": "45"
             },  
             {
-                "name": "roll a cube",
-                "code": "ROLL_A_CUBE",
-                "description" : "Roll a cube",
+                "name": "wheelie",
+                "code": "POP_A_WHEELIE",
+                "description" : "Cozmo pops a wheliee",
                 "text-input" : false,
                 "display": "none",
                 "default": "''"
@@ -89,13 +89,39 @@
         ]
     },
     {
-        "name": "cozmo-lights",
+        "name": "cozmo-things",
         "options": [
             {
-                "name": "red",
+                "name": "lights",
                 "code": "SET_ALL_BACKPACK_LIGHTS",
-                "description" : "Turn the red light in Cozmo",
-                "text-input" : false
+                "description" : "Turn the lights on in Cozmo",
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
+            },
+            {
+                "name": "stack cubes",
+                "code": "STACK_AND_ROLL",
+                "description" : "Stack cubes",
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
+            },
+            {
+                "name": "pick cubes",
+                "code": "PICKUP_FURTHEST",
+                "description" : "Stack cubes",
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
+            },
+            {
+                "name": "roll a cube",
+                "code": "ROLL_A_CUBE",
+                "description" : "Roll a cube",
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
             }
         ]
     },
@@ -106,7 +132,17 @@
                 "name": "happy",
                 "code": "PLAY_ANIM",
                 "description" : "Cozmo shows you how to smile",
-                "text-input" : false
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
+            },
+            {
+                "name": "move head",
+                "code": "MOVE_HEAD",
+                "description" : "Cozmo moves its head",
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
             }
         ]
     }
