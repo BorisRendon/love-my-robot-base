@@ -42,7 +42,7 @@
                 "description" : "Turn left or right",
                 "text-input" : false,
                 "list" : {
-                    "1" : "0",
+                    "1" : "180",
                     "2" : "45",
                     "3" : "90"
                 },
