@@ -47,11 +47,16 @@ function modal(mod){
 }
 
 $(".push-to-stack").click(function(event){
+    console.log(modifier)
+    modifier = modifier || ''
+
     console.log("going to stack")
 
     // modify the code with attribute
-    let theCode = event.target.getAttribute("code")+"&"+modifier
-    
+    let theCode = event.target.getAttribute("code")
+    if(modifier != ""){
+        theCode += "&" + modifier
+    }
     // push li in stack
     $("#cozmo-stack").append('<li class="list-group-item" code='+theCode+'>'+event.target.name+" "+modifier+'<button class="remove btn-danger float-right" code='+theCode+'> x </button></li>');
     let newItem = theCode

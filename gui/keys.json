@@ -11,7 +11,9 @@
                     "1" : "100",
                     "2" : "150",
                     "3" : "200"
-                }
+                },
+                "display": "initial",
+                "default": "100"
             },
             {
                 "name": "backward",
@@ -22,13 +24,17 @@
                     "1" : "-100",
                     "2" : "-150",
                     "3" : "-200"
-                }
+                },
+                "display": "initial",
+                "default": "-100"
             },
             {
                 "name": "square",
                 "code": "DRIVE_SQUARE",
                 "description" : "Cozmo makes a square",
-                "text-input" : false
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
             },
             {
                 "name": "turn",
@@ -39,13 +45,17 @@
                     "1" : "0",
                     "2" : "45",
                     "3" : "90"
-                }
-            },
+                },
+                "display": "initial",
+                "default": "45"
+            },  
             {
                 "name": "roll a cube",
                 "code": "ROLL_A_CUBE",
                 "description" : "Roll a cube",
-                "text-input" : false
+                "text-input" : false,
+                "display": "none",
+                "default": "''"
             }
         ]
     },
@@ -61,7 +71,8 @@
                     "1" : "Yes",
                     "2" : "Hello World",
                     "3" : "<input type='text' name='say' placeholder='Your input'>"
-                }
+                },
+                "default": "'Yes'"
             },
             {
                 "name": "count",
@@ -72,7 +83,8 @@
                     "1" : "3",
                     "2" : "5",
                     "3" : "10"
-                }
+                },
+                "default": "3"
             }
         ]
     },

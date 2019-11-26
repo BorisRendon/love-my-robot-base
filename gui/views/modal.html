@@ -13,13 +13,13 @@
       </div>
       <!---- input text -->
       {{# text-input}}
-      <div>
+      <div style="display: {{display}};">
         <input type='text'>
       </div>
       {{/ text-input}}
       <!---- input dropdown -->
       {{ ^ text-input}}
-      <div class='dropdown'>
+      <div style="display: {{display}};" class='dropdown'>
         <button class='btn btn-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true'>
           Choose
         </button>

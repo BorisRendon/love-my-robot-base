@@ -9,7 +9,7 @@
         {{name}}
         <ul style="margin-top: -{{gap}}px;" class="{{name}} hide submenu">
             {{#options}}
-            <li code="{{code}}" description="{{description}}" class="subli">
+            <li onclick="modifier = {{default}};" code="{{code}}" description="{{description}}" class="subli">
                 <!-- Si no necesita input para tirarlo de una al stack -->
                 {{# no-input}}
                 <span data-toggle="modal" data-target=#{{name}}>{{name}}</span>
