@@ -1,4 +1,3 @@
 flask
-# optional
-redis
+cozmo[camera]
 flas_cors
