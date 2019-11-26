@@ -73,12 +73,12 @@ Then, after you install the dependecies of GUI, you need to install the dependec
 
 First, if you are in love-my-robot-base/gui, then:
 
-```pip
+```bash
 cd ..
 ```
 Go to lex dir:
 
-```pip
+```bash
 cd lex
 ```
 
