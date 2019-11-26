@@ -69,8 +69,8 @@
                 "text-input" : false,
                 "list" : {
                     "1" : "Yes",
-                    "2" : "Hello World",
-                    "3" : "<input type='text' name='say' placeholder='Your input'>"
+                    "2" : "Hello",
+                    "3" : "<input type='text' id='enter' placeholder='Your input' onclick='changeModifier()'>"
                 },
                 "default": "'Yes'"
             },
@@ -114,28 +114,12 @@
                 "text-input" : false,
                 "display": "none",
                 "default": "''"
-            },
-            {
-                "name": "roll a cube",
-                "code": "ROLL_A_CUBE",
-                "description" : "Roll a cube",
-                "text-input" : false,
-                "display": "none",
-                "default": "''"
             }
         ]
     },
     {
         "name": "animations",
         "options": [
-            {
-                "name": "happy",
-                "code": "PLAY_ANIM",
-                "description" : "Cozmo shows you how to smile",
-                "text-input" : false,
-                "display": "none",
-                "default": "''"
-            },
             {
                 "name": "move head",
                 "code": "MOVE_HEAD",

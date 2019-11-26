@@ -44,6 +44,9 @@ let modifier
 
 function modal(mod){
     modifier = mod
+    if (mod == "<input"){
+        modifier = changeModifier()
+    }
     console.log(modifier)
 }
 
@@ -63,3 +66,9 @@ $(".push-to-stack").click((event)=>{
     let newItem = theCode
     $.post('/task-added', {name:newItem}); 
 });
+
+function changeModifier(){
+    let newMod = $('#enter').val()
+    console.log(newMod)
+    return newMod
+}

@@ -25,7 +25,8 @@
     display: none;
 }
 .move {
-    background-color: pink;
+    background-color: #0099FF;
+    border-radius: .5em .5em 0em 0em;
 }
 .sounds {
     background-color: skyblue;
@@ -35,6 +36,7 @@
 }
 .animations {
     background-color: lightseagreen;
+    border-radius: 0em 0em .5em .5em;
 }
 .cubes {    
     background-color: lightgreen;
@@ -43,7 +45,8 @@
 ul.submenu {
     list-style-type: none;
     margin-left: 200%;
-    width: 70%;
+    width: 100%;
+    border-radius: .5em .5em .5em .5em;
 }
 li.subli {
     display: block;
@@ -55,25 +58,3 @@ li.subli {
     height: 60%;
     right: 5%;
 }
-/*
-@media screen and (max-width: 900px) {
-ul.sidenav {
-    width: 100%;
-    height: auto;
-    position: relative;
-}
-
-ul.sidenav li a {
-    float: left;
-    padding: 15px;
-}
-
-div.content {margin-left: 0;}
-}
-  
-@media screen and (max-width: 400px) {
-ul.sidenav li a {
-    text-align: center;
-    float: none;
-}
-}*/
